@@ -1,18 +1,18 @@
-const students = [
-    {student: 'jessica', skill: 'javascript', id: 70933},
-    {student: 'rashel', skill: 'css', id: 43254},
-    {student: 'colin', skill: 'html', id: 54098},
-    {student: 'junyi', skill: 'mvc', id: 08453}
+const skills = [
+    {skill: 'javascript', learned: false},
+    {skill: 'css', learned: false},
+    {skill: 'html', learned: false},
+    {skill: 'mvc', learned: false}
 ];
 
 
 module.exports = {
-    students,
+    skills,
     getSkill
 }
 
- function getSkill(language) {
-    return students.find(function(obj) {
-        return obj.skill === language;
-      }).student
+ function getSkill(skillset) {
+    return skills.find(function(obj) {
+        return obj.skill === skillset;
+      }).skill
     }

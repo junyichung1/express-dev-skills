@@ -1,17 +1,17 @@
-const GaStudent = require('../models/skill');
-// GaStudent now equals module.exports in models/skill
+const CodingSkills = require('../models/skill');
+// codingSkills now equals module.exports in models/skill
 
 function index(req, res) {
     res.render('skills/index', {
-        cohort: GaStudent.students
+        cohort: CodingSkills.skills
 });
 }
 
 function show(req, res) {
     res.render('skills/show', {
-        expertise: GaStudent.getSkill(req.params.language),
-        expert: req.params.language,
-        cohort: GaStudent.student
+        expertise: CodingSkills.getSkill(req.params.skillset),
+        expert: req.params.skillset,
+        cohort: CodingSkills.skill
 });
 }
 
