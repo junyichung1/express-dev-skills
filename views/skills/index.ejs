@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Express Skills</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
@@ -12,9 +12,17 @@
     <ul>
         <% cohort.forEach(function(obj) { %>
            <li>
-            <%= obj.skill %>
+               <form action="/skills/<%=obj.shortcut%>?_method=DELETE"
+                method="POST" class="delete-form"
+                >
+                <button type="submit">X</button>    
+                </form>
+            <a href="/skills/<%=obj.shortcut%>"><%= obj.skill %></a> - 
+            <%=obj.learned ? 'learned' : 'still have to learn' %>
+            
            </li>    
         <% }) %>
     </ul>
+    <a href="/skills/new">Add Skill</a>
 </body>
 </html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Skills</title>
+</head>
+<body>
+    <a href="/">Home</a> | <a href="/skills">Skillset</a>
+    <h1>Edit Language</h1>
+    <form action="/skills/<%=expertise.shortcut%>?_method=PUT" method="POST" autocomplete="off">
+        <input type="checkbox" name="learned" <%= expertise.learned ? "checked" : "" %>>
+        <input type="text" name="skill" value="<%=expertise%>">
+        <button type="submit">Edit Skill</button>
+    </form>
+  <a href="/skills">Skills List</a>
+</body>
+</html>

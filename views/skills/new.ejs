@@ -7,10 +7,11 @@
 </head>
 <body>
     <a href="/">Home</a> | <a href="/skills">Skillset</a>
-    <h1>Language <%= expert %></h1>
-   <h3>
-       <%= expertise %>
-   </h3>
-   <a href="/skills/<%=expert%>/edit">Edit Skillset</a>
+    <h1>Add New Language</h1>
+    <form action="/skills" method="POST" autocomplete="off">
+        <input type="text" name="skill">
+        <button type="submit">Add New Skill</button>
+    </form>
+  <a href="/skills">Skills List</a>
 </body>
 </html>
