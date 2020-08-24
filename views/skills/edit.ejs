@@ -10,7 +10,7 @@
     <h1>Edit Language</h1>
     <form action="/skills/<%=expertise.shortcut%>?_method=PUT" method="POST" autocomplete="off">
         <input type="checkbox" name="learned" <%= expertise.learned ? "checked" : "" %>>
-        <input type="text" name="skill" value="<%=expertise%>">
+        <input type="text" name="skill" value="<%=expertise.skill%>">
         <button type="submit">Edit Skill</button>
     </form>
   <a href="/skills">Skills List</a>

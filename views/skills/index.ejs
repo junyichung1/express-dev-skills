@@ -12,11 +12,7 @@
     <ul>
         <% cohort.forEach(function(obj) { %>
            <li>
-               <form action="/skills/<%=obj.shortcut%>?_method=DELETE"
-                method="POST" class="delete-form"
-                >
-                <button type="submit">X</button>    
-                </form>
+               
             <a href="/skills/<%=obj.shortcut%>"><%= obj.skill %></a> - 
             <%=obj.learned ? 'learned' : 'still have to learn' %>
             

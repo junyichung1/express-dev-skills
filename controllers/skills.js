@@ -13,9 +13,11 @@ module.exports = {
 }
 
 function update(req, res) {
-    req.body.done = !!req.body.done;
+    req.body.learned = !!req.body.learned;
+
     CodingSkills.update(req.params.skillset, req.body)
-    res.redirect(`/skills/${req.params.skillset}`);
+    shortcut = req.body.skill.split(' ').map(function(item){return item[0]}).join('');
+    res.redirect(`/skills/${shortcut}`);
 }
 function edit(req, res) {
     const expertise = CodingSkills.getSkill(req.params.skillset)
@@ -37,7 +39,7 @@ function newSkill(req, res) {
 }
 function index(req, res) {
     res.render('skills/index', {
-        cohort: CodingSkills.skills
+        cohort: CodingSkills.getAll()
 });
 }
 
@@ -45,8 +47,8 @@ function show(req, res) {
     res.render('skills/show', {
         expertise: CodingSkills.getSkill(req.params.skillset),
         expert: req.params.skillset,
-        cohort: CodingSkills.skills
-        
+        cohort: CodingSkills.getAll()
+    
 });
 }
 

@@ -7,7 +7,7 @@ const skills = [
 
 
 module.exports = {
-    skills,
+    getAll,
     getSkill,
     create,
     deleteSkill,
@@ -16,15 +16,19 @@ module.exports = {
 }
 
 function update(shortcut, updatedSkill) {
-    const skill = skills.find(function(obj) {
-        (obj.shortcut === shortcut)
-        })
-        Object.assign(skill, updatedSkill);
+    updatedSkill.shortcut = updatedSkill.skill.split(' ').map(function(item){return item[0]}).join('');
+    const skillsIdx = skills.findIndex(function(obj) {
+
+       return (obj.shortcut === shortcut)
+    });
+    
+    skills[skillsIdx] = updatedSkill;
+    
 }
 function deleteSkill(shortcut) {
     
     const idx = skills.findIndex(function(obj) {
-        (obj.shortcut === shortcut)
+        return (obj.shortcut === shortcut)
         })
     skills.splice(idx, 1);
         
@@ -36,8 +40,8 @@ function deleteSkill(shortcut) {
 function create(newSkill) {
     
     newSkill.learned = false;
-    newSkill.shortcut = (Date.now() % 1000000).toString()
-    // skills.shortcut = newSkill.split(' ').map(function(item){return item[0]}).join('');
+    // newSkill.shortcut = (Date.now() % 1000000).toString()
+    newSkill.shortcut = newSkill.skill.split(' ').map(function(item){return item[0]}).join('');
     skills.push(newSkill);
 
 }
@@ -45,5 +49,9 @@ function create(newSkill) {
  function getSkill(skillset) {
     return skills.find(function(obj) {
         return obj.shortcut === skillset;
-      }).skill
+      })
+    }
+
+    function getAll() {
+        return skills;
     }
